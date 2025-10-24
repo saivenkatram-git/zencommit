@@ -6,9 +6,28 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "zc",
-	Short: "Zen Commit",
-	Long:  "A easy to use CLI tool for creating conventional commits",
+	Use:   "zencommit",
+	Short: "A easy to use CLI tool for conventional commits",
+	Long: `
+
+  ███████╗███████╗███╗   ██╗     ██████╗ ██████╗ ███╗   ███╗███╗   ███╗██╗████████╗
+  ╚══███╔╝██╔════╝████╗  ██║    ██╔════╝██╔═══██╗████╗ ████║████╗ ████║██║╚══██╔══╝
+    ███╔╝ █████╗  ██╔██╗ ██║    ██║     ██║   ██║██╔████╔██║██╔████╔██║██║   ██║   
+   ███╔╝  ██╔══╝  ██║╚██╗██║    ██║     ██║   ██║██║╚██╔╝██║██║╚██╔╝██║██║   ██║   
+  ███████╗███████╗██║ ╚████║    ╚██████╗╚██████╔╝██║ ╚═╝ ██║██║ ╚═╝ ██║██║   ██║   
+  ╚══════╝╚══════╝╚═╝  ╚═══╝     ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝╚═╝   ╚═╝   
+                                                                                     
+                    Conventional Commits Made Easy 
+
+A fast, interactive CLI tool for creating perfect Git commits.
+
+Quick Start:
+  1. zencommit init        Initialize your project
+  2. git add .             Stage your changes
+  3. zencommit commit      Create a beautiful commit
+
+Learn more: https://github.com/saivenkatram-git/zencommit
+`,
 }
 
 func Execute() {

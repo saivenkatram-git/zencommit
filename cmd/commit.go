@@ -42,13 +42,6 @@ func runCommit(cmd *cobra.Command, args []string) {
 		os.Exit(1)
 	}
 
-	// Show header
-	fmt.Println()
-	fmt.Println("╔════════════════════════════════════════════════╗")
-	fmt.Println("║         ZC - Zen Commit Creator                ║")
-	fmt.Println("╚════════════════════════════════════════════════╝")
-	fmt.Println()
-
 	// COMMIT TYPE
 	typePrompt := promptui.Select{
 		Label: "Select commit type",
