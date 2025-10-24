@@ -1,4 +1,4 @@
-![image alt](https://github.com/saivenkatram-git/zencommit/blob/f28cad5f91077c964de5aeaddb72c184a65250da/assets/logo.png)
+<img src="https://github.com/saivenkatram-git/zencommit/blob/f28cad5f91077c964de5aeaddb72c184a65250da/assets/logo.png" alt="Zen Commit Logo" width="80" height="80">
 
 # Zen Commit
 
