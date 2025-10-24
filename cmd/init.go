@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/saivenkatram-git/zc/internal/git"
+	"github.com/saivenkatram-git/zencommit/internal/git"
 	"github.com/spf13/cobra"
 	"os"
 )

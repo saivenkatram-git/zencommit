@@ -6,9 +6,9 @@ import (
 	"strings"
 
 	"github.com/manifoldco/promptui"
-	"github.com/saivenkatram-git/zc/internal/config"
-	"github.com/saivenkatram-git/zc/internal/git"
-	"github.com/saivenkatram-git/zc/internal/types"
+	"github.com/saivenkatram-git/zencommit/internal/config"
+	"github.com/saivenkatram-git/zencommit/internal/git"
+	"github.com/saivenkatram-git/zencommit/internal/types"
 	"github.com/spf13/cobra"
 )
 

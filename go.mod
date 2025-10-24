@@ -1,4 +1,4 @@
-module github.com/saivenkatram-git/zc
+module github.com/saivenkatram-git/zencommit
 
 go 1.25.1
 
