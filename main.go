@@ -1,6 +1,6 @@
 package main
 
-import "github.com/saivenkatram-git/zc/cmd"
+import "github.com/saivenkatram-git/zencommit/cmd"
 
 func main() {
 	cmd.Execute()
