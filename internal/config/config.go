@@ -51,7 +51,7 @@ func Load() (*Config, error) {
 
 	// Check if config exists
 	if _, err := os.Stat(configPath); os.IsNotExist(err) {
-		return nil, fmt.Errorf("config file not found. Run 'zencommit init' first")
+		return nil, fmt.Errorf("Config file not found. Run 'zencommit init' first")
 	}
 
 	var config Config

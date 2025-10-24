@@ -1,6 +1,7 @@
 package git
 
 import (
+	"fmt"
 	"os/exec"
 	"strings"
 )
@@ -59,4 +60,20 @@ func BuildCommitMessage(commitType, scope, desc, body string, breaking bool, bre
 	}
 
 	return msg.String()
+}
+
+func ExecuteHook(command string) error {
+	if command == "" {
+		return nil
+	}
+
+	cmd := exec.Command("bash", "-c", command)
+
+	output, err := cmd.CombinedOutput()
+
+	if len(output) > 0 {
+		fmt.Println(string(output))
+	}
+
+	return err
 }

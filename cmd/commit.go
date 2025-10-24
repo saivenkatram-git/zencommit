@@ -197,7 +197,7 @@ func runCommit(cmd *cobra.Command, args []string) {
 		fmt.Println()
 	}
 
-	// TICKER DETAILS (JIRA, ETC) (OPTIONAL)
+	// TICKET DETAILS (JIRA, ETC) (OPTIONAL)
 	ticket := ""
 	if cfg.Commit.TicketPrefix != "" {
 		ticketPrompt := promptui.Prompt{
@@ -251,11 +251,35 @@ func runCommit(cmd *cobra.Command, args []string) {
 
 	fmt.Println()
 
+	// 12. Run pre-commit hook if configured
+	if cfg.Hooks.PreCommit != "" {
+		fmt.Printf("Running pre-commit hook: %s\n", cfg.Hooks.PreCommit)
+		if err := git.ExecuteHook(cfg.Hooks.PreCommit); err != nil {
+			fmt.Printf("❌ Pre-commit hook failed: %v\n", err)
+			fmt.Println("   Commit aborted")
+			os.Exit(1)
+		}
+		fmt.Println("✓ Pre-commit hook passed")
+		fmt.Println()
+	}
+
 	// 13. Execute the commit
 	fmt.Println("Committing changes...")
 	if err := git.Commit(message); err != nil {
 		fmt.Printf("❌ Commit failed: %v\n", err)
 		os.Exit(1)
+	}
+
+	// 14. Run post-commit hook if configured
+	if cfg.Hooks.PostCommit != "" {
+		fmt.Printf("Running post-commit hook: %s\n", cfg.Hooks.PostCommit)
+		if err := git.ExecuteHook(cfg.Hooks.PostCommit); err != nil {
+			fmt.Printf("⚠️  Post-commit hook failed: %v\n", err)
+			// Don't exit on post-commit failure - commit already succeeded
+		} else {
+			fmt.Println("✓ Post-commit hook passed")
+		}
+		fmt.Println()
 	}
 
 	// 15. Success message
