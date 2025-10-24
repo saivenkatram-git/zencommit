@@ -21,7 +21,7 @@ func runInit(cmd *cobra.Command, args []string) {
 		os.Exit(1)
 	}
 
-	configPath := "zc.config.toml"
+	configPath := "zencommit.config.toml"
 
 	// CHECK FOR EXISTING CONFIG..
 	if _, err := os.Stat(configPath); err == nil {
