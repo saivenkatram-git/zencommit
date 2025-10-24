@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/BurntSushi/toml"
@@ -46,10 +47,11 @@ type HooksConfig struct {
 }
 
 func Load() (*Config, error) {
-	configPath := "zc.config.toml"
+	configPath := "zencommit.config.toml"
 
+	// Check if config exists
 	if _, err := os.Stat(configPath); os.IsNotExist(err) {
-		return DefaultConfig(), nil
+		return nil, fmt.Errorf("config file not found. Run 'zencommit init' first")
 	}
 
 	var config Config
