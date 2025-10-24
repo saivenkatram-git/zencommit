@@ -1,0 +1,74 @@
+# .goreleaser.yml
+version: 2
+
+project_name: zencommit
+
+before:
+  hooks:
+    - go mod tidy
+    - go test ./...
+
+builds:
+  - binary: zencommit
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ignore:
+      - goos: windows
+        goarch: arm64
+    ldflags:
+      - -s -w
+      - -X github.com/saivenkatram-git/zencommit/cmd.version={{.Version}}
+      - -X github.com/saivenkatram-git/zencommit/cmd.commit={{.Commit}}
+      - -X github.com/saivenkatram-git/zencommit/cmd.date={{.Date}}
+
+archives:
+  - name_template: >-
+      {{ .ProjectName }}_
+      {{- .Version }}_
+      {{- .Os }}_
+      {{- .Arch }}
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+
+brews:
+  - name: zencommit
+
+    # Repository configuration
+    repository:
+      owner: saivenkatram-git
+      name: homebrew-tap
+      branch: main
+      token: "{{ .Env.TAP_GITHUB_TOKEN }}"
+
+    # Formula directory
+    directory: Formula
+
+    # Metadata
+    homepage: "https://github.com/saivenkatram-git/zencommit"
+    description: "Zen Commit - A beautiful conventional commits tool"
+    license: "MIT"
+
+    # Commit configuration
+    commit_author:
+      name: goreleaserbot
+      email: bot@goreleaser.com
+
+    # Installation
+    install: |
+      bin.install "zencommit"
+
+    # Test
+    test: |
+      system "#{bin}/zencommit", "version"
