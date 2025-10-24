@@ -1,3 +1,5 @@
+![image alt](https://github.com/saivenkatram-git/zencommit/blob/f28cad5f91077c964de5aeaddb72c184a65250da/assets/logo.png)
+
 # Zen Commit
 
 A beautiful, interactive CLI tool for creating [conventional commits](https://www.conventionalcommits.org/).
